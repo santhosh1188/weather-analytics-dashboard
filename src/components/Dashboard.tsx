@@ -23,13 +23,20 @@ const Dashboard: React.FC = () => {
   }, [favorites, dispatch]);
 
   const handleGoogleSignIn = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-      alert('Signed in!');
-    } catch (err) {
-      console.error(err);
+  try {
+    await signInWithPopup(auth, googleProvider);
+    alert('Signed in successfully! Welcome back.');
+  } catch (err: any) {
+    if (err.code === 'auth/popup-blocked') {
+      alert('Popup blocked! Allow popups for this site and try again.');
+    } else if (err.code === 'auth/popup-closed-by-user') {
+      console.log('User closed popup – no action needed');
+    } else {
+      alert(`Sign-in error: ${err.message}`);
     }
-  };
+    console.error('Auth Error:', err);
+  }
+};
 
   const convert = (temp: number) => unit === 'C' ? temp : (temp * 9/5) + 32;
 

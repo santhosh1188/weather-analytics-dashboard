@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# Weather Analytics Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A **real-time, multi-city weather analytics dashboard** built with **React, TypeScript, Redux Toolkit, and Recharts**. Features interactive charts, persistent favorites, Celcius to fahrenheit toggle, Google Authentication, and responsive design.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Live Demo
+[https://weather-analytics-dashboard.vercel.app/](https://weather-analytics-dashboard.vercel.app/)
 
-### `npm start`
+## GitHub Repository
+[https://github.com/santhosh1188/weather-analytics-dashboard](https://github.com/santhso1188/weather-analytics-dashboard)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+| Feature | Implemented |
+|--------|-------------|
+| Multi-city dashboard with weather cards | Yes |
+| 7-day forecast + Next 12 Hours | Yes (Line + Bar charts) |
+| Interactive visualizations | Yes (Recharts: Line, Bar, Radar) |
+| Search with autocomplete | Yes (WeatherAPI.com) |
+| Add/Remove cities from favorites | Yes (click **Remove**) |
+| Persistent favorites (on refresh) | Yes (Redux Persist) |
+| C/F unit toggle (real-time update) | Yes |
+| Google Sign-In (Firebase) | Yes (Bonus) |
+| Real-time updates (every 60s) | Yes (Polling + caching) |
+| Fully responsive (mobile-friendly) | Yes |
+| Clean, modern UI with animations | Yes |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Frontend**: React 18, TypeScript, Hooks
+- **State Management**: Redux Toolkit + Redux Persist
+- **Routing**: React Router DOM v6
+- **Charts**: Recharts (interactive, responsive)
+- **API**: [WeatherAPI.com](https://www.weatherapi.com/) (current + forecast + search)
+- **Auth**: Firebase Google Auth
+- **Styling**: CSS Modules + Responsive Grid
+- **Build Tool**: Create React App (react-scripts 5.0.1)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Structure
+weather-analytics-dashboard/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Dashboard.tsx
+│   │   ├── CityCard.tsx
+│   │   ├── DetailedView.tsx
+│   │   ├── SearchBar.tsx
+│   │   └── Settings.tsx
+│   ├── redux/
+│   │   ├── store.ts
+│   │   ├── weatherSlice.ts
+│   │   ├── favoritesSlice.ts
+│   │   └── unitsSlice.ts
+│   ├── services/
+│   │   └── weatherApi.ts
+│   ├── types.ts
+│   ├── firebase.ts
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── index.css
+├── package.json
+├── tsconfig.json
+└── README.md
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Setup & Run Locally
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# 1. Clone the repo
+git clone https://github.com/santhosh1188/weather-analytics-dashboard.git
+cd weather-analytics-dashboard
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# 2. Install dependencies
+npm install
 
-## Learn More
+# 3. Start development server
+npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Build for Production
+npm run build
+The build/ folder is ready for deployment.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# API Used
+WeatherAPI.com (Free tier)
 
-### Code Splitting
+## Endpoints:
+current.json → Current weather
+forecast.json → 7-day + hourly
+search.json → City autocomplete
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+API key is included in code (free tier, no billing).
 
-### Analyzing the Bundle Size
+# Deployment
+Deployed using Vercel (zero-config):
+vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Author
+Santosh
+[https://github.com/santhosh1188](url) | [https://www.linkedin.com/in/penupotula-santhosh/](url)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# License
+MIT License
