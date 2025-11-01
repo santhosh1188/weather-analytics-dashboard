@@ -1,0 +1,156 @@
+.detailed-view {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.detailed-view h1 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.detailed-view h3 {
+  margin: 25px 0 15px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+  font-size: 0.95rem;
+}
+
+.stats p {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.suggestions {
+  position: absolute;
+  background: white;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0 !important;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px 8px 0 0;
+}
+
+.suggestions li {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
+}
+
+.detailed-view {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.back-btn {
+  padding: 8px 16px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.header { text-align: center; margin: 20px 0; }
+.main-icon { width: 80px; height: 80px; }
+.main-temp { font-size: 3rem; font-weight: bold; margin: 10px 0; }
+.condition { font-size: 1.3rem; color: #555; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 25px 0;
+  font-size: 0.95rem;
+}
+
+.stats p {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.detailed-view h3 {
+  margin: 30px 0 15px;
+  color: #333;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.footer-note {
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px dashed #ddd;
+}
+
+@media (max-width: 600px) {
+  .stats { grid-template-columns: 1fr; }
+}
+
+.city-card {
+  position: relative;
+  padding-top: 40px;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.remove-btn:hover {
+  background: #c82333;
+}
