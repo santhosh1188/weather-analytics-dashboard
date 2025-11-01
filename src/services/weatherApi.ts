@@ -2,7 +2,7 @@ import axios from 'axios';
 import { WeatherData, ForecastItem, HourlyItem } from '../types';
 
 const API_KEY = '21cc6155622e440d9df35753250111';
-const BASE_URL = 'http://api.weatherapi.com/v1';
+const BASE_URL = 'https://api.weatherapi.com/v1';
 
 const cache: { [key: string]: { data: WeatherData; timestamp: number } } = {};
 const CACHE_DURATION = 60000;

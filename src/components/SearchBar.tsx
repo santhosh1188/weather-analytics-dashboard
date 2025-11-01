@@ -4,45 +4,43 @@ import { useDispatch } from 'react-redux';
 import { addFavorite } from '../redux/favoritesSlice';
 
 const API_KEY = '21cc6155622e440d9df35753250111';
+const BASE_URL = 'https://api.weatherapi.com/v1'; // HTTPS ONLY
 
 const SearchBar: React.FC = () => {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim();
     setQuery(value);
-    if (value.length >= 2) { // Lower threshold to 2 chars
-      try {
-        const res = await axios.get(
-          `http://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${value}`
-        );
-        console.log('API Response:', res.data); // Debug in console
-        if (res.data && res.data.length > 0) {
-          setSuggestions(res.data.map((item: any) => `${item.name}, ${item.region || item.country}`));
-        } else {
-          setSuggestions([]); // No results
-        }
-      } catch (err: any) {
-        console.error('Search API Error:', err.response?.data || err.message);
-        setSuggestions([]); // Handle error silently
-        if (err.response?.status === 400) {
-          console.log('Invalid query – try a full city name');
-        }
+    setSuggestions([]);
+
+    if (value.length < 2) return;
+
+    setLoading(true);
+    try {
+      const res = await axios.get(`${BASE_URL}/search.json`, {
+        params: { key: API_KEY, q: value },
+        timeout: 5000,
+      });
+
+      if (res.data && Array.isArray(res.data)) {
+        setSuggestions(res.data.map((item: any) => `${item.name}, ${item.region || item.country}`));
       }
-    } else {
-      setSuggestions([]);
+    } catch (err: any) {
+      console.error('Search failed:', err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleSelect = (city: string) => {
     const name = city.split(',')[0].trim();
-    if (name) {
-      dispatch(addFavorite(name));
-      setQuery('');
-      setSuggestions([]);
-    }
+    dispatch(addFavorite(name));
+    setQuery('');
+    setSuggestions([]);
   };
 
   return (
@@ -51,25 +49,18 @@ const SearchBar: React.FC = () => {
         type="text"
         value={query}
         onChange={handleChange}
-        placeholder="Search city (e.g., London, hyd for Hyderabad)..."
+        placeholder="Search city..."
+        disabled={loading}
       />
+      {loading && <p style={{ fontSize: '0.9rem', color: '#007bff' }}>Searching...</p>}
       {suggestions.length > 0 && (
         <ul className="suggestions">
           {suggestions.map((city, i) => (
-            <li
-              key={i}
-              onClick={() => handleSelect(city)}
-              style={{ cursor: 'pointer' }}
-            >
+            <li key={i} onClick={() => handleSelect(city)}>
               {city}
             </li>
           ))}
         </ul>
-      )}
-      {query.length >= 2 && suggestions.length === 0 && (
-        <p style={{ color: '#999', fontSize: '0.9rem', marginTop: '5px' }}>
-          No cities found – try a different spelling
-        </p>
       )}
     </div>
   );
