@@ -99,9 +99,16 @@ search.json → City autocomplete
 
 API key is included in code (free tier, no billing).
 
+## screenshots
+![image 1](screenshots/weather-analytics-ss1.png)
+![image 2](screenshots/weather-analytics-ss2.png)
+![image 3](screenshots/weather-analytics-ss3.png)
+![mobile image](screenshots/weather-analytics-mobile.jpeg)
+
 # Deployment
 Deployed using Vercel (zero-config):
-vercel
+Vercel
+vercel Link: https://weather-analytics-dashboard.vercel.app/
 
 # Author
 Santosh
